@@ -1,0 +1,79 @@
+// Primeros pasos
+git clone https://github.com/rafaeldrs/practicaEGC1.git
+cd practicaEGC1/
+ls
+git config --global user.name "rafael"
+git config --global user.email "rafael@us.es"
+
+// Preparar claves
+ssh-keygen
+en carpeta admin -> cd .ssh
+cat github_rsa
+
+// Moverse entre carpetas 
+cd practicaEGC1/
+cd .git/
+cd ..
+cd ~
+
+// Abrir archivos
+// Nota: usar tab tras escribir una letra para autocompletar
+// Usar 'nombre archivo con espacios.py' si el archivo tuviera espacios
+Crear -> touch webpage.html
+Con bloc de notas -> notepad webpage.html
+Con programa por defecto -> start webpage.html
+
+
+// Configuracion de git
+cat .git/config 
+git config -l
+
+// Untracked files
+Eliminar archivos untracked -> git clean (con opciones -i por ejemplo)
+
+// Subida de archivos
+git add nombrearchivo
+git commit -a
+git status
+git diff HEAD
+git checkout nombrearchivo
+el gitignore
+git show codigoCommit
+git log
+ls
+
+cd . o cd ..
+cd carpetaRepo
+cat .git/config
+git push origin master (<--- repositorio remoto de referencia y rama remota de referencia)
+git rm nombre fichero y git commit -a
+git rv nombrefichero nombre fichero
+
+git pull --rebase (se baja lo que hay en el repo y le aplica tus cambios encima, puede provocar conflictos)
+git pull
+git log --oneline
+si me arrepiento al borrar: git reset --hard (o soft)
+git reset HEAD^ (si ya has hecho commit)
+git reset HEAD-2
+
+
+
+
+git diff HEAD..Etiqueta de otro commit anterior (te dice los cambios entre los dos)
+
+touch webpage.html
+notepad webpage.html
+start webpage.html
+
+git config -l
+git config --global core.editor "gitpad"
+git config core.editor "'C:\Program Files (x86)\Notepad++\notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+
+
+cd ~
+
+C:\"Program Files (x86)"\Notepad++\notepad++.exe $args[0]
+
+NOTAS:
+Enterarme de donde se crea la clave publica
+buscar el editor de windows :wq para hacer un write y quit
