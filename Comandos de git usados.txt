@@ -27,12 +27,15 @@ Para mostrar en consola -> cat nombrearchivo
 // Configuracion de git
 cat .git/config 
 git config -l
+git config --global core.editor "gitpad"
+git config core.editor "'C:\Program Files (x86)\Notepad++\notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+
 
 // Untracked files
 Eliminar archivos untracked -> git clean (con opciones -i por ejemplo)
 
 // Tracked modified files
-descartar cambios -> git checkout nombrefile
+descartar cambios -> git checkout <codigoCommi> nombrefile
 subir cambios -> git add nombrefile
 
 // Añadido/Borrado de archivos
@@ -41,6 +44,13 @@ o -> git rm nombrearchivo
 para revertir -> git reset HEAD nombrefile
 
 git commit -a
+
+// Respecto al repositorio remoto
+revertir todos los commit respecto al remoto -> git reset HEAD^
+revertir dos commits respecto al remoto -> git reset HEAD-2
+git push origin master (<--- repositorio remoto de referencia y rama remota de referencia)
+git pull --rebase (se baja lo que hay en el repo y le aplica tus cambios encima, puede provocar conflictos)
+git pull
 
 // Ver el estado de los cambios del repositorio
 estado del repo y posibles acciones -> git status
@@ -51,34 +61,12 @@ ver los cambios de un commit concreto -> git show codigoCommit
 // Archivos especiales
 el gitignore
 
-git push origin master (<--- repositorio remoto de referencia y rama remota de referencia)
-git rm nombre fichero y git commit -a
-git rv nombrefichero nombre fichero
-
-git pull --rebase (se baja lo que hay en el repo y le aplica tus cambios encima, puede provocar conflictos)
-git pull
-git log --oneline
 si me arrepiento al borrar: git reset --hard (o soft)
-git reset HEAD^ (si ya has hecho commit)
-git reset HEAD-2
 
 
 
 
 git diff HEAD..Etiqueta de otro commit anterior (te dice los cambios entre los dos)
-
-touch webpage.html
-notepad webpage.html
-start webpage.html
-
-git config -l
-git config --global core.editor "gitpad"
-git config core.editor "'C:\Program Files (x86)\Notepad++\notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
-
-
-cd ~
-
-C:\"Program Files (x86)"\Notepad++\notepad++.exe $args[0]
 
 NOTAS:
 Enterarme de donde se crea la clave publica
