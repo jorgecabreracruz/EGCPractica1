@@ -22,7 +22,7 @@ cd ~
 Crear -> touch webpage.html
 Con bloc de notas -> notepad webpage.html
 Con programa por defecto -> start webpage.html
-
+Para mostrar en consola -> cat nombrearchivo
 
 // Configuracion de git
 cat .git/config 
@@ -31,20 +31,26 @@ git config -l
 // Untracked files
 Eliminar archivos untracked -> git clean (con opciones -i por ejemplo)
 
-// Subida de archivos
-git add nombrearchivo
-git commit -a
-git status
-git diff HEAD
-git checkout nombrearchivo
-el gitignore
-git show codigoCommit
-git log
-ls
+// Tracked modified files
+descartar cambios -> git checkout nombrefile
+subir cambios -> git add nombrefile
 
-cd . o cd ..
-cd carpetaRepo
-cat .git/config
+// Añadido/Borrado de archivos
+o -> git add nombrearchivo
+o -> git rm nombrearchivo
+para revertir -> git reset HEAD nombrefile
+
+git commit -a
+
+// Ver el estado de los cambios del repositorio
+estado del repo y posibles acciones -> git status
+estado de archivos respecto HEAD -> git diff HEAD
+datos de log -> git log (--oneline para mostrar titulo solo) (Q para hacer quit)
+ver los cambios de un commit concreto -> git show codigoCommit
+
+// Archivos especiales
+el gitignore
+
 git push origin master (<--- repositorio remoto de referencia y rama remota de referencia)
 git rm nombre fichero y git commit -a
 git rv nombrefichero nombre fichero
