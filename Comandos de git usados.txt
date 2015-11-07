@@ -35,6 +35,7 @@ git config core.editor "'C:\Program Files (x86)\Notepad++\notepad++.exe' -multiI
 Eliminar archivos untracked -> git clean (con opciones -i por ejemplo)
 
 // Tracked modified files
+descartar todos los cambios en working directory -> git reset --hard
 descartar cambios -> git checkout <codigoCommi> nombrefile
 subir cambios -> git add nombrefile
 
@@ -55,19 +56,9 @@ git pull
 // Ver el estado de los cambios del repositorio
 estado del repo y posibles acciones -> git status
 estado de archivos respecto HEAD -> git diff HEAD
+git diff HEAD..Etiqueta de otro commit anterior (te dice los cambios entre los dos)
 datos de log -> git log (--oneline para mostrar titulo solo) (Q para hacer quit)
 ver los cambios de un commit concreto -> git show codigoCommit
 
 // Archivos especiales
 el gitignore
-
-si me arrepiento al borrar: git reset --hard (o soft)
-
-
-
-
-git diff HEAD..Etiqueta de otro commit anterior (te dice los cambios entre los dos)
-
-NOTAS:
-Enterarme de donde se crea la clave publica
-buscar el editor de windows :wq para hacer un write y quit
