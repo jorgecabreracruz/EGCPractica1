@@ -36,6 +36,9 @@ Eliminar archivos untracked -> git clean (con opciones -i por ejemplo)
 
 // Tracked modified files
 descartar todos los cambios en working directory -> git reset --hard
+nota: antes de git reset --hard quizas se quiera hacer: git stash, y posteriormente git stash pop
+esto permite usar la pila para no perder los ultimos cambios
+
 descartar cambios -> git checkout <codigoCommi> nombrefile
 subir cambios -> git add nombrefile
 
@@ -45,6 +48,12 @@ o -> git rm nombrearchivo
 para revertir -> git reset HEAD nombrefile
 
 git commit -a
+
+// Movimiento entre commits
+git checkout <commit code>
+git checkout master
+// Tras realizar un git checkout a un commit antiguo, debes crear una nueva rama ya que sino
+// tendrias "HEAD detached from <codigoCommit>" y no podrías hacer push a ningun sitio en concreto
 
 // Respecto al repositorio remoto
 revertir todos los commit respecto al remoto -> git reset HEAD^
