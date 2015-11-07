@@ -16,6 +16,9 @@ cd .git/
 cd ..
 cd ~
 
+// Crear carpeta
+mkdir nombrecarpeta
+
 // Abrir archivos
 // Nota: usar tab tras escribir una letra para autocompletar
 // Usar 'nombre archivo con espacios.py' si el archivo tuviera espacios
@@ -71,7 +74,8 @@ datos de log -> git log (--oneline para mostrar titulo solo) (Q para hacer quit)
 ver los cambios de un commit concreto -> git show codigoCommit
 
 // Archivos especiales
-el gitignore
+.gitignore: es un archivo que permite ignorar ciertos archivos
+.gitkeep: es solo un placeholder. No hace nada. Sirve para que se guarde una carpeta "vacia" en github.
 
 // Resolución de conflictos
 Si está detached (HEAD detached from codigoCommit) -> significa que lo que estas trabajando es una rama
