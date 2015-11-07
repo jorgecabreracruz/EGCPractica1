@@ -62,3 +62,26 @@ ver los cambios de un commit concreto -> git show codigoCommit
 
 // Archivos especiales
 el gitignore
+
+// Resolución de conflictos
+Si está detached (HEAD detached from codigoCommit) -> significa que lo que estas trabajando es una rama
+fuera de referencia simbolica, de manera que la solucion es crear una rama temporal, poner los cambios en ella
+luego hacer merge ambas ramas y posteriormente eliminar la rama temporal
+ejemplo: 
+Crear rama temporal -> git branch temp 
+Asociar tu working directory con la rama -> git checkout temp
+// Comparamos la rama temporal con el master 
+git log --graph --decorate --pretty=oneline --abbrev-commit master origin/master temp
+git diff master temp
+git diff origin/master temp
+// Fusionar ambas ramas
+git branch -f master temp
+git checkout master
+// Eliminamos la rama temporal
+git branch -d temp
+// Probar a hacer push
+git push origin master
+// Si se producen conflictos no dejara, y tendras que hacer lo siguiente (muy probable)
+git pull 
+start archivo que ha dado conflictos, y resolverlos
+git add, commit y push finalmente
