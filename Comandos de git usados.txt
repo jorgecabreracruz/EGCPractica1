@@ -41,6 +41,7 @@ esto permite usar la pila para no perder los ultimos cambios
 
 descartar cambios -> git checkout <codigoCommi> nombrefile
 subir cambios -> git add nombrefile
+dejar cambios pero quitarlos del stagging -> git reset HEAD nombrefile
 
 // Añadido/Borrado de archivos
 o -> git add nombrearchivo
@@ -59,8 +60,8 @@ git checkout master
 revertir todos los commit respecto al remoto -> git reset HEAD^
 revertir dos commits respecto al remoto -> git reset HEAD-2
 git push origin master (<--- repositorio remoto de referencia y rama remota de referencia)
-git pull --rebase (se baja lo que hay en el repo y le aplica tus cambios encima, puede provocar conflictos)
-git pull
+git pull --rebase 
+git pull (se baja lo que hay en el repo y le aplica tus cambios encima, puede provocar conflictos)
 
 // Ver el estado de los cambios del repositorio
 estado del repo y posibles acciones -> git status
@@ -94,3 +95,16 @@ git push origin master
 git pull 
 start archivo que ha dado conflictos, y resolverlos
 git add, commit y push finalmente
+
+
+// Otros:
+// Crear alias para abrir el notepad++ desde la consola de git escribiendo "npp"
+https://gist.github.com/rogerwalt/7300568
+# create profile
+New-Item -path $profile -type file -force
+
+# open it with notepad
+notepad $profile
+
+# add alias to notepad++ to it
+Set-Alias npp "C:\Program Files (x86)\Notepad++\notepad++.exe"
