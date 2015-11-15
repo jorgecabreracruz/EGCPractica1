@@ -35,7 +35,7 @@ git config --global core.editor "'C:\Program Files (x86)\Notepad++\notepad++.exe
 
 
 // Untracked files
-Eliminar archivos untracked -> git clean (con opciones -i por ejemplo)
+Eliminar archivos untracked -> git clean -f (con opciones -i por ejemplo)
 
 // Tracked modified files
 descartar todos los cambios en working directory -> git reset --hard
@@ -65,6 +65,12 @@ revertir dos commits respecto al remoto -> git reset HEAD-2
 git push origin master (<--- repositorio remoto de referencia y rama remota de referencia)
 git pull --rebase 
 git pull (se baja lo que hay en el repo y le aplica tus cambios encima, puede provocar conflictos)
+
+// Si nos arrepentimos tras hacer commit
+en local y HEAD -> git commit --amend
+en local y no HEAD -> git rebase commitcode^ <-- importante el ^
+git revert commitcode
+
 
 // Ver el estado de los cambios del repositorio
 estado del repo y posibles acciones -> git status
