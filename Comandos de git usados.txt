@@ -68,7 +68,9 @@ git pull (se baja lo que hay en el repo y le aplica tus cambios encima, puede pr
 
 // Si nos arrepentimos tras hacer commit
 en local y HEAD -> git commit --amend
-en local y no HEAD -> git rebase commitcode^ <-- importante el ^
+en local y no HEAD -> git rebase -i commitcode^ <-- importante el ^
+luego modificar la linea del commit deseado donde pone pick por e
+posteriormente hacer git rebase --continue
 git revert commitcode
 
 
