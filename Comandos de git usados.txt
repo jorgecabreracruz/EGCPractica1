@@ -99,6 +99,7 @@ fuera de referencia simbolica, de manera que la solucion es crear una rama tempo
 luego hacer merge ambas ramas y posteriormente eliminar la rama temporal
 ejemplo: 
 Crear rama temporal -> git branch temp 
+Crear rama a partir de una en el repositorio -> git branch temp remotes/origin/temp
 Asociar tu working directory con la rama -> git checkout temp
 Comprobar la rama en la que te encuentras -> git branch
 
