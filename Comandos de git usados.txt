@@ -76,7 +76,7 @@ git revert commitcode
 
 // Ver el estado de los cambios del repositorio
 estado del repo y posibles acciones -> git status
-estado de archivos respecto HEAD -> git diff HEAD
+estado de archivos respecto HEAD antes de commit -> git diff HEAD
 git diff HEAD..Etiqueta de otro commit anterior (te dice los cambios entre los dos)
 datos de log -> git log (--oneline para mostrar titulo solo) (Q para hacer quit)
 ver los cambios de un commit concreto -> git show codigoCommit
