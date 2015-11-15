@@ -77,10 +77,14 @@ git revert commitcode
 // Ver el estado de los cambios del repositorio
 estado del repo y posibles acciones -> git status
 estado de archivos respecto HEAD antes de commit -> git diff HEAD
-git diff HEAD..Etiqueta de otro commit anterior (te dice los cambios entre los dos)
+git diff HEAD..CommitCode (te dice los cambios entre los dos)
 datos de log -> git log (--oneline para mostrar titulo solo) (Q para hacer quit)
 ver los cambios de un commit concreto -> git show codigoCommit
 ver cambios de un archivo -> git annotate nombrefile
+
+//Exportar cambios al repositorio
+si no has hecho commit -> git diff HEAD > fichero-salida.patch
+si has hecho commit -> git format-patch -1 HEAD (donde -1 es el numero de commits y HEAD el codigo commit a partir de donde)
 
 // Archivos especiales
 .gitignore: es un archivo que permite ignorar ciertos archivos
