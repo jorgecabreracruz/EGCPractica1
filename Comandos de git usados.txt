@@ -102,6 +102,12 @@ Crear rama temporal -> git branch temp
 Asociar tu working directory con la rama -> git checkout temp
 Comprobar la rama en la que te encuentras -> git branch
 
+// Crear rama en repo remoto
+git push origin temp
+comprobar ramas en que te encuentras y las del repo remoto -> git branch -a
+eliminar rama del repositorio remoto -> git push origin :temp
+eliminar rama del repositorio local -> git branch -d temp
+
 // Comparamos la rama temporal con el master 
 git log --graph --decorate --pretty=oneline --abbrev-commit master origin/master temp
 git diff master temp
