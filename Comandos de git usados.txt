@@ -72,6 +72,7 @@ estado de archivos respecto HEAD -> git diff HEAD
 git diff HEAD..Etiqueta de otro commit anterior (te dice los cambios entre los dos)
 datos de log -> git log (--oneline para mostrar titulo solo) (Q para hacer quit)
 ver los cambios de un commit concreto -> git show codigoCommit
+ver cambios de un archivo -> git annotate nombrefile
 
 // Archivos especiales
 .gitignore: es un archivo que permite ignorar ciertos archivos
@@ -84,17 +85,22 @@ luego hacer merge ambas ramas y posteriormente eliminar la rama temporal
 ejemplo: 
 Crear rama temporal -> git branch temp 
 Asociar tu working directory con la rama -> git checkout temp
+
 // Comparamos la rama temporal con el master 
 git log --graph --decorate --pretty=oneline --abbrev-commit master origin/master temp
 git diff master temp
 git diff origin/master temp
+
 // Fusionar ambas ramas
 git branch -f master temp
 git checkout master
+
 // Eliminamos la rama temporal
 git branch -d temp
+
 // Probar a hacer push
 git push origin master
+
 // Si se producen conflictos no dejara, y tendras que hacer lo siguiente (muy probable)
 git pull 
 start archivo que ha dado conflictos, y resolverlos
