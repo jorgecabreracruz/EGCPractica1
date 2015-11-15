@@ -100,6 +100,7 @@ luego hacer merge ambas ramas y posteriormente eliminar la rama temporal
 ejemplo: 
 Crear rama temporal -> git branch temp 
 Asociar tu working directory con la rama -> git checkout temp
+Comprobar la rama en la que te encuentras -> git branch
 
 // Comparamos la rama temporal con el master 
 git log --graph --decorate --pretty=oneline --abbrev-commit master origin/master temp
