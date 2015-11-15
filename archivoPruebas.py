@@ -1,4 +1,4 @@
-Print ("Hola mundo")
+Print ("Hola mundo 2")
 contador = 0
 contador = contado + 1
 Print ("adios mundo")
