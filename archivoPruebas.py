@@ -4,3 +4,4 @@ contador = contado + 1
 Print("git diff")
 Print ("adios mundo")
 #modificación del archivo añadiendo un comentario
+Print("Conflicto?")
