@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>archetype.it</groupId>
+	<artifactId>basic</artifactId>
+	<packaging>jar</packaging>
+	<version>0.1-SNAPSHOT</version>
+	<name>basic</name>
+	<url>http://maven.apache.org</url>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+		
+			<!-- Make this jar executable -->
+			<!-- This allows us to do the mvn jar:jar -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<!--Pluging configuration -->
+					<archive>
+						<manifest>
+						
+							<!-- Since it's a jar, we specify the file entry point -->
+							<mainClass>${project.groupId}.App</mainClass>
+
+							<!-- The following lines allow us to use log4j dependency -->
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>dependencias/</classpathPrefix>
+
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			
+			<!-- The following plugin allow us to package dependencies -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.10</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<!-- Phase in which we copy dependencies -->
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<!-- Output folder where store depedencies -->
+							<outputDirectory>${project.build.directory}/dependencias</outputDirectory>
+							<!-- Specify which dependencies' scope we copy -->
+							<includeScope>runtime</includeScope> 
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<!-- The following lines allows us to deploy the project to our desired folder -->
+	<distributionManagement>
+		<repository>
+			<id>idRepo</id>
+			<name>nombreRepo</name>
+			<url>file:\\C:\Users\admin\Desktop\Nueva carpeta</url>
+		</repository>
+	</distributionManagement>
+
+
+</project>
