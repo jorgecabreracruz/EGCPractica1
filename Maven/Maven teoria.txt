@@ -14,8 +14,8 @@ mvn -B archetype:generate -DgroupId='es.egc.app' -DartifactId=proy1
 
 --- Comandos de ejecución ---
 mvn compile
-mvn test (contiene a compile)
-mvn package (contiene a los anteriores)
+mvn test (contiene a compile) --> deja los reportes en target/surefire-reports/TEST-PruebaApp.AppTest.xml
+mvn package (contiene a los anteriores) --> deja los archivos generados en target/*.jar
 mvn clean (se puede combinar, ej: mvn clean package)
 mvn jar:jar ---> tras añadir plugin de jar.
 
