@@ -1,0 +1,186 @@
+--- Instalar maven ---
+
+Para instalar maven se debe descargar y configurar las variables de entorno. Una vez hecho
+ejecutar el comando:
+
+mvn --version
+
+--- Crear un proyecto maven ---
+
+Comandos: 
+mvn archetype:generate --> e ir eligiendo las cosas poco a poco
+mvn -B archetype:generate -DgroupId='es.egc.app' -DartifactId=proy1 -DarchetypeArtifactId=maven-archetype-quickstart
+mvn -B archetype:generate -DgroupId='es.egc.app' -DartifactId=proy1
+
+--- Comandos de ejecución ---
+mvn compile
+mvn test (contiene a compile)
+mvn package (contiene a los anteriores)
+mvn clean (se puede combinar, ej: mvn clean package)
+mvn jar:jar ---> tras añadir plugin de jar.
+
+--- Añadir dependencia Log4j ---
+
+<dependency>
+     <groupId>log4j</groupId>
+     <artifactId>log4j</artifactId>
+     <version>1.2.17</version>
+     <scope>compile</scope>
+</dependency>
+
+scope puede ser compile, test, runtime
+
+Log4j necesita de archivo log4j.properties en src/main/resources con este contenido:
+
+# Root logger option
+log4j.rootLogger=INFO, stdout
+# Direct log messages to stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+
+// Logger de ejemplo
+import org.apache.log4j.*; 
+…
+static Logger log=Logger.getLogger(App.class); 
+…
+log.info("Returning 1");
+
+--- Añadir plugin jar ---
+
+Este pluging se llama "mvn clean jar:jar", si hacemos esto solo ejecuta fase package sin compile ni test.
+Esto produce un jar sin clases al no tenerlas compiladas.
+<build>
+	<plugins>
+  		<!-- Make this jar executable -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>2.6</version>
+			<configuration>
+			<!--Pluging configuration -->
+			 <archive>
+				<manifest>
+					<!-- Jar file entry point -->
+					<mainClass>${project.groupId}.App</mainClass>
+
+<!-- Estas dos lineas sirven para que sepa de donde obtener las dependencias -->
+<addClasspath>true</addClasspath>
+<classpathPrefix> dependencias/</classpathPrefix>
+
+				</manifest>
+			  </archive>
+			</configuration>
+		</plugin>
+	</plugins>
+  </build>
+
+--- Ejecutar un jar ---
+java -jar target\....jar
+
+
+--- Añadir pluging copy-dependency ---
+
+Este pluging sirve para copiar las dependencias al jar generado.
+
+<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.10</version>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/dependencias</outputDirectory>
+              <includeScope> runtime </includeScope> 
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+mvn package
+java -jar ruta_al.jar
+
+
+--- Despliegue de proyecto con maven ---
+
+mvn deploy 
+
+Con lo siguiente elegimos la carpeta donde desplegar:
+<distributionManagement>
+    <repository>
+      <id> idRepo</id>
+      <name> nombreRepo</name>
+      <url> file:\\ruta_carpeta_despliegue </url>
+    </repository>
+</distributionManagement>
+
+Observar maven-metadata.xml de la carpeta donde desplegamos.
+
+
+--- Crear un archetype ---
+mvn archetype:create-from-project
+
+En cd target/generated-sources/archetype
+
+mvn install
+
+Crear un nuevo proyecto a partir del archetype:
+mvn archetype:generate -DarchetypeCatalog=local
+
+--- Creación de perfiles ---
+ <profiles>
+   <profile>
+     <id> prof-1 </id>
+     <build>
+     …
+     </build>
+     <distributionManagement>
+     …
+     </distributionManagement>
+  </profile>
+</profiles>
+
+Formas de activar el perfil:
+1- mvn -P nombrePerfil deploy
+2-   …
+  <profile>
+     <id> prof-1 </id>
+     <activation>
+	 <os>
+		<family>windows</family>
+	 </os>
+     </activation>
+     <build>
+  …
+3-  …
+  <profile>
+     <id> prof-1 </id>
+     <activation>
+	 <file>
+		<exists>C:\myRepo</exists>
+	 </file>
+     </activation>
+     <build>
+  …
+Tambien se puede usar missing en lugar de exists
+
+4-   …
+  <profile>
+     <id> prof-1 </id>
+     <activation>
+	<property>
+          <name>env</name>
+          <value>dev</value>
+        </property>
+ 
+     </activation>
+     <build>
+  …
+
+Se ejecutaría con mvn –Denv=dev … .
