@@ -129,6 +129,11 @@ git pull
 start archivo que ha dado conflictos, y resolverlos
 git add, commit y push finalmente
 
+// Tags
+- ver tags: git tag
+- crear tag local: git tag -a 1.4 -m "my version 1.4"
+- ver tag local: git show v1.4
+- tags a repo remoto: git push origin --tags // git push origin 1.4
 
 // Otros:
 // Crear alias para abrir el notepad++ desde la consola de git escribiendo "npp"
