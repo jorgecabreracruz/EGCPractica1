@@ -1,0 +1,14 @@
+--- Instalar gradle ---
+
+Instalar gradle es parecido a maven, teniendo en cuenta la configuración de las variables
+de entorno en el SO.
+
+Una vez instalado ejecutar: gradle -v
+
+--- Crear carpeta donde se creará dentro el proyecto ---
+
+Una vez creada la carpeta ejecutamos: gradle tasks --all
+Esto nos mostrará una lista con las tareas que podemos ejecutar y una breve descripcion.
+Además crea una carpeta de configuración llamada .gradle
+
+--- Crear proyecto con gradle ---
