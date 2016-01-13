@@ -3,12 +3,75 @@
 Instalar gradle es parecido a maven, teniendo en cuenta la configuración de las variables
 de entorno en el SO.
 
-Una vez instalado ejecutar: gradle -v
+Una vez instalado ejecutar: 
+> gradle -v
 
 --- Crear carpeta donde se creará dentro el proyecto ---
 
-Una vez creada la carpeta ejecutamos: gradle tasks --all
+Una vez creada la carpeta ejecutamos: 
+> gradle tasks --all
 Esto nos mostrará una lista con las tareas que podemos ejecutar y una breve descripcion.
 Además crea una carpeta de configuración llamada .gradle
 
 --- Crear proyecto con gradle ---
+Gradle nos permite trabajar con diferentes lenguajes (no solo java).
+Para crear un proyecto java de ejemplo usamos:
+>gradle init --type java-library
+
+Enlace a la documentación --> https://docs.gradle.org/current/userguide/java_plugin.html
+Enlace a grafo de dependencias --> https://docs.gradle.org/current/userguide/img/javaPluginTasks.png
+Grafo no lineal como en maven, sino con tareas en paralelo.
+
+Al crear el proyecto en build.gradle se definen las dependencias, el tipo de proyecto
+y el repositorio a usar.
+scope de librerias: https://docs.gradle.org/current/userguide/img/javaPluginConfigurations.png
+
+El archivo settings.gradle permite definir varios proyectos que participan
+de la construcción. útil en python por ejemplo.
+
+--- Testear el proyecto ---
+> gradle test
+o
+> gradle test --info
+
+Creará la carpeta build donde se almacenan la construcción.
+En la carpeta build/reports/tests observar index.html
+
+eliminar la carpeta build
+> gradle clean 
+
+--- Crear el jar ---
+Para crear un jar ejecutable necesitamos que alguna clase tenga un main.
+
+Paso 1: añadir main a la clase Library
+Paso 2: configurar build.gradle para definir main class
+Paso 3: ejecutar
+> gradle clean assemble
+Paso 4: ejecutar
+> java –jar build\libs\...jar
+
+
+--- Configurar carpeta de origen de clases ---
+Cambiar nombre de carpeta "src" a "src2". Si ejecutamos:
+> gradle clean build
+veremos como en la carpeta build no ha detectado las clases.
+
+Para modificar el sourceSets, añadir el código indicado a build.gradle
+
+--- Crear una tarea ---
+Documentación --> https://docs.gradle.org/current/dsl/org.gradle.api.Task.html
+
+Una nueva tarea debe ser definida en build.gradle.
+Tipos de tarea de las que puede heredar la nuestra --> https://docs.gradle.org/current/dsl/
+
+En la que hemos hecho de ejemplo, heredamos de Copy, y la empleamos
+para copiar las dependencias en la carpeta que definimos.
+En el from decimos que copie las dependencias del tiempo de ejecución
+por lo que jUnit no se copiará, solo SLF4J.
+
+Le hemos añadido una descripción a la tarea y hemos hecho que dependa de 
+jar y test. De forma que si la llamamos se ejecutarán estas dos, y las
+que éstas dependan.
+
+Por último hemos hecho que assemble dependa de nuestra tarea, por lo
+que si la ejecutamos, forzamos a que ejecute nuestra tarea se ejecute.
