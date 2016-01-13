@@ -4,13 +4,19 @@
  *
  * @author admin, @date 13/01/16 19:41
  */
+ 
+import org.apache.log4j.*;
+ 
 public class Library {
+	
+	static Logger log=Logger.getLogger(Library.class); 
+	
     public boolean someLibraryMethod() {
         return true;
     }
 	
-	public static void main( String[] args )
-    {
+	public static void main( String[] args ) {
+		log.info("Returning 1");
         System.out.println( "Hola Mundo!" );
     }
 }

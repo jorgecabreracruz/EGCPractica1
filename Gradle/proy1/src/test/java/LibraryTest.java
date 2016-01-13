@@ -1,4 +1,5 @@
 import org.junit.Test;
+import org.apache.log4j.*;
 import static org.junit.Assert.*;
 
 /*
@@ -8,7 +9,11 @@ import static org.junit.Assert.*;
  * @author admin, @date 13/01/16 19:41
  */
 public class LibraryTest {
+	
+	static Logger log=Logger.getLogger(LibraryTest.class); 
+	
     @Test public void testSomeLibraryMethod() {
+		log.info("Returning hello world");
         Library classUnderTest = new Library();
         assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
     }
