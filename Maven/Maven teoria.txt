@@ -12,14 +12,14 @@ mvn archetype:generate --> e ir eligiendo las cosas poco a poco
 mvn -B archetype:generate -DgroupId='es.egc.app' -DartifactId=proy1 -DarchetypeArtifactId=maven-archetype-quickstart
 mvn -B archetype:generate -DgroupId='es.egc.app' -DartifactId=proy1
 
---- Comandos de ejecución ---
+--- Comandos de ejecuciÃ³n ---
 mvn compile
 mvn test (contiene a compile) --> deja los reportes en target/surefire-reports/TEST-PruebaApp.AppTest.xml
 mvn package (contiene a los anteriores) --> deja los archivos generados en target/*.jar
 mvn clean (se puede combinar, ej: mvn clean package)
-mvn jar:jar ---> tras añadir plugin de jar.
+mvn jar:jar ---> tras aÃ±adir plugin de jar.
 
---- Añadir dependencia Log4j ---
+--- AÃ±adir dependencia Log4j ---
 
 <dependency>
      <groupId>log4j</groupId>
@@ -42,12 +42,12 @@ log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1
 
 // Logger de ejemplo
 import org.apache.log4j.*; 
-…
+â€¦
 static Logger log=Logger.getLogger(App.class); 
-…
+â€¦
 log.info("Returning 1");
 
---- Añadir plugin jar ---
+--- AÃ±adir plugin jar ---
 
 Este pluging se llama "mvn clean jar:jar", si hacemos esto solo ejecuta fase package sin compile ni test.
 Esto produce un jar sin clases al no tenerlas compiladas.
@@ -80,7 +80,7 @@ Esto produce un jar sin clases al no tenerlas compiladas.
 java -jar target\....jar
 
 
---- Añadir pluging copy-dependency ---
+--- AÃ±adir pluging copy-dependency ---
 
 Este pluging sirve para copiar las dependencias al jar generado.
 
@@ -133,22 +133,22 @@ mvn install
 Crear un nuevo proyecto a partir del archetype:
 mvn archetype:generate -DarchetypeCatalog=local
 
---- Creación de perfiles ---
+--- CreaciÃ³n de perfiles ---
  <profiles>
    <profile>
      <id> prof-1 </id>
      <build>
-     …
+     â€¦
      </build>
      <distributionManagement>
-     …
+     â€¦
      </distributionManagement>
   </profile>
 </profiles>
 
 Formas de activar el perfil:
 1- mvn -P nombrePerfil deploy
-2-   …
+2-   â€¦
   <profile>
      <id> prof-1 </id>
      <activation>
@@ -157,8 +157,8 @@ Formas de activar el perfil:
 	 </os>
      </activation>
      <build>
-  …
-3-  …
+  â€¦
+3-  â€¦
   <profile>
      <id> prof-1 </id>
      <activation>
@@ -167,10 +167,10 @@ Formas de activar el perfil:
 	 </file>
      </activation>
      <build>
-  …
+  â€¦
 Tambien se puede usar missing en lugar de exists
 
-4-   …
+4-   â€¦
   <profile>
      <id> prof-1 </id>
      <activation>
@@ -181,6 +181,9 @@ Tambien se puede usar missing en lugar de exists
  
      </activation>
      <build>
-  …
+  â€¦
 
-Se ejecutaría con mvn –Denv=dev … .
+Se ejecutarÃ­a con mvn â€“Denv=dev â€¦ .
+
+
+Comando heroku: heroku deploy:war --war .\target\counting-2.1.0.RELEASE.war --app "recuento"`
